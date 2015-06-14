@@ -1,0 +1,5 @@
+name: OT Egg Control
+author: OmniTitan Shaan
+version: 1.0
+main: com.omnititan.shaan.OTEggControl.Main
+description: Template plugin
