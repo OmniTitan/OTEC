@@ -3,3 +3,6 @@ StopEggSpawnArea:
     y: 5
     z: 5
 StopEggSpawnAmount: 10
+worlds:
+    plotworld:
+        size: 30

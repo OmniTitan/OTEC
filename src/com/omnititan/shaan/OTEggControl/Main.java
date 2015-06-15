@@ -1,5 +1,15 @@
 package com.omnititan.shaan.OTEggControl;
 
+import com.worldcretornica.plotme_core.Plot;
+import com.worldcretornica.plotme_core.PlotMapInfo;
+import com.worldcretornica.plotme_core.PlotMeCoreManager;
+import com.worldcretornica.plotme_core.PlotMe_Core;
+import com.worldcretornica.plotme_core.api.IItemStack;
+import com.worldcretornica.plotme_core.api.ILocation;
+import com.worldcretornica.plotme_core.api.IPlayer;
+import com.worldcretornica.plotme_core.api.IWorld;
+import com.worldcretornica.plotme_core.bukkit.api.BukkitPlayer;
+import com.worldcretornica.plotme_core.bukkit.api.BukkitWorld;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,6 +22,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -47,6 +58,7 @@ public class Main extends JavaPlugin implements Listener {
 
         OTPlayer p = new OTPlayer(c.getPlayer());
         p.setDate();
+
         c.getPlayer().sendMessage("Hello from Event");
         p.getDateDiff();
     }
@@ -54,6 +66,16 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent e){
         //TODO Add in check for who spawns egg so can send them a message.
+        IPlayer p = new BukkitPlayer(e.getPlayer());
+        //TODO IF Statements to check null status of ifInPlot and ifInWorld
+        String worldPlot = "worlds." + e.getPlayer().getWorld().getName() + ".size";
+        int plotSize = getConfig().getInt(worldPlot);
+        String plotId = PlotMeCoreManager.getInstance().getPlotId(p);
+        e.getPlayer().sendMessage(String.valueOf(plotSize));
+        e.getPlayer().sendMessage(String.valueOf(PlotMeCoreManager.getInstance().getPlotBottomLoc(p.getWorld(), plotId).getX()));
+//        PlotMapInfo map = PlotMeCoreManager.getInstance().getMap((IWorld) e.getPlayer().getWorld());
+
+
     }
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent e){
