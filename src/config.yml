@@ -6,3 +6,4 @@ StopEggSpawnAmount: 10
 worlds:
     plotworld:
         size: 30
+        allowed-entities: 10
