@@ -1,8 +1,4 @@
-StopEggSpawnArea:
-    x: 5
-    y: 5
-    z: 5
-StopEggSpawnAmount: 10
+# All Worlds must be plotworlds and ALL plotworlds must be listed here.
 worlds:
     plotworld:
         size: 30
